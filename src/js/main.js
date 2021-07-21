@@ -1,3 +1,4 @@
+import { enterAnimation } from './transistionAnimations';
 import barba from '@barba/core';
 import anime from 'animejs';
 
@@ -7,22 +8,28 @@ barba.init({
       name: 'default-transition',
       leave({ current }) {
         let done = this.async();
-
-        let title = current.container.querySelector('.title');
-
-        anime({
-          targets: title,
-          translateY: '-100%',
-          skewY: 10,
-          easing: 'easeInQuint',
-          duration: 800,
-          complete: () => {
-            done();
-          },
-        });
+        enterAnimation(current.container, done);
       },
       enter({ next }) {
         let title = next.container.querySelector('.title');
+
+        if (next.namespace == 'about') {
+          anime({
+            targets: '.square',
+            left: '70%',
+            skewX: [10, 0],
+            easing: 'easeOutExpo',
+            duration: 1200,
+          });
+        } else {
+          anime({
+            targets: '.square',
+            left: '30%',
+            skewX: [-10, 0],
+            easing: 'easeOutExpo',
+            duration: 1200,
+          });
+        }
 
         anime({
           targets: title,

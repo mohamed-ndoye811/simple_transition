@@ -7,6 +7,17 @@ body {
   font-size: 15px;
   user-select: none;
 
+  .square {
+    background-color: #436aa8;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 60%;
+    left: 30%;
+    box-sizing: border-box;
+    border-radius: 50%;
+  }
+
   header {
     position: fixed;
     top: 0;
